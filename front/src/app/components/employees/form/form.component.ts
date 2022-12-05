@@ -75,11 +75,26 @@ export class FormComponent implements OnInit {
 		this.addressFormControl.markAsTouched();
 
 		if (this.employeeForm.valid) {
-			this.service.addEmployee(this.employeeForm.value).subscribe((res) => {
-				if (res) {
-					this.router.navigate(['']);
-				}
-			})
+			if (this.oldEmpl) {
+				const res = this.employeeForm.value;
+				res._id = this.oldEmpl._id;
+				this.service.updateEmployee(res).subscribe(
+					(data) => {
+						console.log(data);
+						this.router.navigate(['']);
+					},
+					(error) => {
+						console.log(error);
+					}
+				);
+			} else {
+
+				this.service.addEmployee(this.employeeForm.value).subscribe((res) => {
+					if (res) {
+						this.router.navigate(['']);
+					}
+				})
+			}
 		}
 	}
 
