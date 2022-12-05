@@ -1,0 +1,44 @@
+<div class="container">
+	<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label for="code">Code</label>
+			<input type="text" class="form-control" id="code" formControlName="code" />
+			<span *ngIf="employeeForm.get('code')?.invalid && employeeForm.get('code')?.touched">Code is required</span>
+		</div>
+		<div class="form-group">
+			<label for="nom">Nom</label>
+			<input type="text" class="form-control" id="nom" formControlName="nom" />
+			<span *ngIf="employeeForm.get('nom')?.invalid && employeeForm.get('nom')?.touched">Nom is required</span>
+		</div>
+		<div class="form-group">
+			<label for="prenom">Prenom</label>
+			<input type="text" class="form-control" id="prenom" formControlName="prenom" />
+			<span *ngIf="employeeForm.get('prenom')?.invalid && employeeForm.get('prenom')?.touched">Prenom is required</span>
+		</div>
+		<div class="form-group">
+			<label for="specialite">Specialite</label>
+			<input type="text" class="form-control" id="specialite" formControlName="specialite" />
+			<span *ngIf="employeeForm.get('specialite')?.invalid && employeeForm.get('specialite')?.touched">Specialite is required</span>
+		</div>
+		<div class="form-group">
+			<label for="cin">Cin</label>
+			<input type="number" class="form-control" id="cin" formControlName="cin" />
+			<span *ngIf="employeeForm.get('cin')?.invalid && employeeForm.get('cin')?.touched">Cin is required</span>
+		</div>
+		<div class="form-group">
+			<label for="phone">Phone</label>
+			<input type="number" class="form-control" id="phone" formControlName="phone" />
+			<span *ngIf="employeeForm.get('phone')?.invalid && employeeForm.get('phone')?.touched">Phone is required</span>
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" id="email" formControlName="email" />
+			<span *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">Email is required</span>
+		</div>
+		<div class="form-group">
+			<label for="address">Address</label>
+			<input type="text" class="form-control" id="address" formControlName="address" />
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
