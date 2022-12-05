@@ -16,5 +16,9 @@ constructor(private http:HttpClient) { }
   addEmployee(employee:Employee):Observable<Employee>{
 	return this.http.post<Employee>("http://127.0.0.1:8080/customers",employee);
   }
+
+  deleteEmployee(id:number):Observable<Employee>{
+	return this.http.delete<Employee>("http://127.0.0.1:8080/customers/"+id);
+  }
   
 }

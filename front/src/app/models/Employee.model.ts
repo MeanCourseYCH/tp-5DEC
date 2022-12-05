@@ -1,13 +1,13 @@
 export interface Employee{
 	_id: string;
-    code :number
-    nom: String
-    prenom: String
-    specialite: String
+    code :string
+    nom: string
+    prenom: string
+    specialite: string
     cin : number
     phone : number
-    email : String
-    address : String
+    email : string
+    address : string
 }
 
 export class EmployeeWrapper{
