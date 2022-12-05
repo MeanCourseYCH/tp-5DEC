@@ -10,7 +10,7 @@ let userSchema = new mongoose.Schema({
 	"cin":{ type: Number, required: true },
 	"phone":{ type: Number, required: true },
 	"email":{ type: String, required: true },
-	"adress":{ type: String, required: true }
+	"address":{ type: String, required: true }
 });
 
 const User = mongoose.model("user", userSchema, "user");

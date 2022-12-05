@@ -11,3 +11,28 @@ export const findAll = async (req: Request, res: Response) => {
 		res.send(data)
 	})
 };
+
+export const store = async (req: Request, res: Response) => {
+	// const user = new User({
+	// 	nom: req.body.nom,
+	// 	prenom: req.body.prenom,
+	// 	specialite: req.body.specialite,
+	// 	cin: req.body.cin,
+	// 	phone: req.body.phone,
+	// 	email: req.body.email,
+	// 	address: req.body.address,
+	// });
+	// user.save().then(data=>{
+	// 	res.send(data)
+	// })
+
+	const user = new User(req.body);
+	user.save((err: any) => {
+		if (err) return res.status(500).send(err.message);
+		else return res.status(200).send(user);
+	})
+
+}
+
+
+
