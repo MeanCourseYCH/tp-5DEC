@@ -1,4 +1,5 @@
 export interface Employee{
+	_id: string;
     code :number
     nom: String
     prenom: String

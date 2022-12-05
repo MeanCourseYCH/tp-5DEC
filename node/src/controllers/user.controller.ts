@@ -7,7 +7,7 @@ export const findAll = async (req: Request, res: Response) => {
 	const size: number = parseInt(req.query.size?.toString() || '5');
 
 	// paginate search and populate comments
-	User.find().then(data=>{
+	User.find().then(data => {
 		res.send(data)
 	})
 };
@@ -33,6 +33,20 @@ export const store = async (req: Request, res: Response) => {
 	})
 
 }
+
+export const destroy = async (req: Request, res: Response) => {
+	User.findById(req.params.id, (err: any, status: any) => {
+		if (err) return res.status(500).send(err);
+		else if (!status) return res.status(404).send("not found");
+		else {
+			status.remove((err: any) => {
+				if (err) return res.status(500).send(err);
+				else return res.status(200).send(status);
+			});
+		}
+	}
+	)
+};
 
 
 
