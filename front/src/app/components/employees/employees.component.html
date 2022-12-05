@@ -1,3 +1,24 @@
+
+<!-- alert -->
+<div>
+	<div class="alert alert-success" *ngIf="msg!=''">
+		{{msg}}
+	</div>
+</div>
+<!-- search bar -->
+<div class="row my-4">
+	<div class="col-md-8">
+		<h1>Employees</h1>
+	</div>
+	<div class="col-md-4">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="button" (click)="search()">Search</button>
+			</div>
+		</div>
+	</div>
+</div>
 <table class="table">
 	<thead>
 		<tr>
@@ -9,7 +30,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let emp of employees">
+		<tr *ngIf="employees.length==0">
+			<th style="text-align: center;" colspan="5" >No data found</th>
+		</tr>
+		<tr *ngFor="let emp of employees" >
 			<th scope="row">{{ emp.code }}</th>
 			<td>{{ emp.nom }} </td>
 			<td>{{ emp.email }} </td>

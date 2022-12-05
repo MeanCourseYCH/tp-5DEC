@@ -25,4 +25,8 @@ export class DataService {
 		return this.http.put<Employee>("http://127.0.0.1:8080/customers/" + employee._id, employee);
 	}
 
+	searchEmployee(searchText: string): Observable<Employee[]> {
+		return this.http.get<Employee[]>("http://127.0.0.1:8080/customers/search?search=" + searchText);
+	}
+
 }

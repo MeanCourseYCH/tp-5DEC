@@ -1,46 +1,61 @@
 <div class="container">
-	<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-		<div class="form-group">
-			<label for="code">Code</label>
-			<input type="text" class="form-control" id="code" [formControl]="codeFormControl" formControlName="code" />
-			<span *ngIf="hasError('code')" class="text-danger">{{getErrorMessage('code')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="nom">Nom</label>
-			<input type="text" class="form-control" id="nom" formControlName="nom" />
-			<span *ngIf="hasError('nom')" class="text-danger">{{getErrorMessage('nom')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="prenom">Prenom</label>
-			<input type="text" class="form-control" id="prenom" formControlName="prenom" />
-			<span *ngIf="hasError('prenom')" class="text-danger">{{getErrorMessage('prenom')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="specialite">Specialite</label>
-			<input type="text" class="form-control" id="specialite" formControlName="specialite" />
-			<span *ngIf="hasError('specialite')" class="text-danger">{{getErrorMessage('specialite')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="cin">Cin</label>
-			<input type="number" class="form-control" id="cin" formControlName="cin" />
-			<span *ngIf="hasError('cin')" class="text-danger">{{getErrorMessage('cin')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="phone">Phone</label>
-			<input type="number" class="form-control" id="phone" formControlName="phone" />
-			<span *ngIf="hasError('phone')" class="text-danger">{{getErrorMessage('phone')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="email" class="form-control" id="email" formControlName="email" />
-			<span *ngIf="hasError('email')" class="text-danger">{{getErrorMessage('email')}}</span>
-		</div>
-		<div class="form-group">
-			<label for="address">Address</label>
-			<input type="text" class="form-control" id="address" formControlName="address" />
-			<span *ngIf="hasError('address')" class="text-danger">{{getErrorMessage('address')}}</span>
+	<h1>{{oldEmpl?'Update an employee':'Add an employee'}}</h1>
+	<form class="card p-4" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+		<div class="row">
 
+			<div class="form-group col-6">
+				<label for="code">Code</label>
+				<input type="text" class="form-control" id="code" [formControl]="codeFormControl"
+					formControlName="code" />
+				<span *ngIf="hasError('code')" class="text-danger">{{getErrorMessage('code')}}</span>
+			</div>
+			<div class="form-group col-6">
+				<label for="nom">Nom</label>
+				<input type="text" class="form-control" id="nom" formControlName="nom" />
+				<span *ngIf="hasError('nom')" class="text-danger">{{getErrorMessage('nom')}}</span>
+			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<div class="row">
+
+			<div class="form-group col-6">
+				<label for="prenom">Prenom</label>
+				<input type="text" class="form-control" id="prenom" formControlName="prenom" />
+				<span *ngIf="hasError('prenom')" class="text-danger">{{getErrorMessage('prenom')}}</span>
+			</div>
+			<div class="form-group col-6">
+				<label for="specialite">Specialite</label>
+				<input type="text" class="form-control" id="specialite" formControlName="specialite" />
+				<span *ngIf="hasError('specialite')" class="text-danger">{{getErrorMessage('specialite')}}</span>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="form-group col-6">
+				<label for="cin">Cin</label>
+				<input type="number" class="form-control" id="cin" formControlName="cin" />
+				<span *ngIf="hasError('cin')" class="text-danger">{{getErrorMessage('cin')}}</span>
+			</div>
+
+			<div class="form-group col-6">
+				<label for="phone">Phone</label>
+				<input type="number" class="form-control" id="phone" formControlName="phone" />
+				<span *ngIf="hasError('phone')" class="text-danger">{{getErrorMessage('phone')}}</span>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="form-group col-6">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" formControlName="email" />
+				<span *ngIf="hasError('email')" class="text-danger">{{getErrorMessage('email')}}</span>
+			</div>
+			<div class="form-group col-6">
+				<label for="address">Address</label>
+				<input type="text" class="form-control" id="address" formControlName="address" />
+				<span *ngIf="hasError('address')" class="text-danger">{{getErrorMessage('address')}}</span>
+
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">{{oldEmpl ? 'Update' : 'Add'}}</button>
 	</form>
 </div>

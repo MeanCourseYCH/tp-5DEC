@@ -10,9 +10,16 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class EmployeesComponent implements OnInit {
 
-	constructor(private dataService: DataService,private router:Router) { }
+	constructor(private dataService: DataService,private router:Router) {
+		let ret = this.router.getCurrentNavigation()?.extras.state;
+		if (ret&&ret['msg']) {
+			this.msg = ret['msg'];
+		}
+	}
 
+	searchText: string = '';
 	employees: any;
+	msg: string = '';
 	ngOnInit(): void {
 		this.getEmployeeData();
 	}
@@ -25,7 +32,7 @@ export class EmployeesComponent implements OnInit {
 	}
 
 	editEmployee(empl: Employee) {
-		this.router.navigateByUrl('/add',{state:empl});
+		this.router.navigateByUrl('/form',{state:empl});
 	}
 
 	deleteEmployee(id: any) {
@@ -33,7 +40,18 @@ export class EmployeesComponent implements OnInit {
 			this.dataService.deleteEmployee(id).subscribe(res => {
 				console.log(res);
 				this.getEmployeeData();
+				this.msg = 'Employee deleted successfully';
 			});
+		}
+	}
+
+	search(){
+		if(this.searchText){
+			this.dataService.searchEmployee(this.searchText).subscribe(res=>{
+				this.employees = res;
+			});
+		}else{
+			this.getEmployeeData();
 		}
 	}
 }

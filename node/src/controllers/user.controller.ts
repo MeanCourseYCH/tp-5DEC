@@ -58,6 +58,25 @@ export const update = async (req: Request, res: Response) => {
 	})
 };
 
+export const search = async (req: Request, res: Response) => {
+	const search = req.query.search || '';
+
+	// paginate search and populate comments
+	User.find(
+		{
+			$or: [
+				{ nom: { $regex: search, $options: 'i' } },
+				{ prenom: { $regex: search, $options: 'i' } },
+				{ specialite: { $regex: search, $options: 'i' } },
+				{ email: { $regex: search, $options: 'i' } },
+				{ address: { $regex: search, $options: 'i' } },
+			]
+		}
+	).then(data => {
+		res.send(data)
+	})
+}
+
 
 
 

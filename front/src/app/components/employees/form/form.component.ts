@@ -81,7 +81,9 @@ export class FormComponent implements OnInit {
 				this.service.updateEmployee(res).subscribe(
 					(data) => {
 						console.log(data);
-						this.router.navigate(['']);
+						this.router.navigate([''],{state:{
+							msg : "Updated Successfully"
+						}});
 					},
 					(error) => {
 						console.log(error);
@@ -91,7 +93,9 @@ export class FormComponent implements OnInit {
 
 				this.service.addEmployee(this.employeeForm.value).subscribe((res) => {
 					if (res) {
-						this.router.navigate(['']);
+						this.router.navigate([''],{state:{
+							msg : "Added Successfully"
+						}});
 					}
 				})
 			}
