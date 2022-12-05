@@ -13,22 +13,53 @@ export class FormComponent implements OnInit {
 
 	constructor(private service: DataService, private router: Router) {
 		this.employeeForm = new FormGroup({
-			code: new FormControl('', [Validators.required]),
-			nom: new FormControl('', [Validators.required]),
-			prenom: new FormControl('', [Validators.required]),
-			specialite: new FormControl('', [Validators.required]),
-			cin: new FormControl('', [Validators.required]),
-			phone: new FormControl('', [Validators.required]),
-			email: new FormControl('', [Validators.required]),
-			address: new FormControl('', [Validators.required]),
+			code: this.codeFormControl,
+			nom: this.nomFormControl,
+			prenom: this.prenomFormControl,
+			specialite: this.specialiteFormControl,
+			cin: this.cinFormControl,
+			phone: this.phoneFormControl,
+			email: this.emailFormControl,
+			address: this.addressFormControl
 		});
 	}
 
+	codeFormControl = new FormControl('', [ Validators.required ]);
+	nomFormControl = new FormControl('', [ Validators.required ]);
+	prenomFormControl = new FormControl('', [ Validators.required ]);
+	specialiteFormControl = new FormControl('', [ Validators.required ]);
+	cinFormControl = new FormControl('', [ Validators.required ]);
+	phoneFormControl = new FormControl('', [ Validators.required ]);
+	emailFormControl = new FormControl('', [ Validators.required ]);
+	addressFormControl = new FormControl('', [ Validators.required ]);
+
+	public hasError = (controlName: string) => {
+		return this.employeeForm.controls[controlName].invalid;
+	};
+
+	public getErrorMessage = (controlName: string) => {
+		let error = '';
+		const control = this.employeeForm.controls[controlName];
+		if (control.touched && control.errors != null) {
+			error = Object.keys(control.errors)[0];
+		}
+		return error;
+	};
+	
 	
 
 	onSubmit() {
 		console.log(this.employeeForm.value);
 		console.log(this.employeeForm.valid);
+		this.codeFormControl.markAsTouched();
+		this.nomFormControl.markAsTouched();
+		this.prenomFormControl.markAsTouched();
+		this.specialiteFormControl.markAsTouched();
+		this.cinFormControl.markAsTouched();
+		this.phoneFormControl.markAsTouched();
+		this.emailFormControl.markAsTouched();
+		this.addressFormControl.markAsTouched();
+		
 		if (this.employeeForm.valid) {
 			this.service.addEmployee(this.employeeForm.value).subscribe((res) => {
 				if (res) {
