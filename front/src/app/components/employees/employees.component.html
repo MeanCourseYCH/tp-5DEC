@@ -1,0 +1,18 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Code</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Specialite</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let emp of employees">
+			<th scope="row">{{ emp.code }}</th>
+			<td>{{ emp.nom }} </td>
+			<td>{{ emp.email }} </td>
+			<td>{{ emp.specialite }} </td>
+		</tr>
+	</tbody>
+</table>
